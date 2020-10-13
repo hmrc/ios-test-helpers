@@ -27,12 +27,12 @@ open class CoreTestCase: XCTestCase {
     // MARK: - Helpers
     private(set) var loggingEnabled = loggingEnabledByDefault
 
-    func set(logging enabled: Bool) -> Self {
+    public func set(logging enabled: Bool) -> Self {
         loggingEnabled = enabled
         return self
     }
 
-    func info(_ message: String) {
+    public func info(_ message: String) {
         guard loggingEnabled else { return }
 
         let clsName = String(describing: self.classForCoder)
@@ -91,7 +91,7 @@ open class CoreTestCase: XCTestCase {
 
     ///Waits until the code in retry block returns nil. If the operation times out then the last fail reason returned by the retry handler
     ///is returned
-    func waitUntil(_ description: String,
+    public func waitUntil(_ description: String,
                    timeout: TimeInterval=Test.Timeout,
                    in file: String = #file,
                    at line: Int = #line,
@@ -125,7 +125,7 @@ open class CoreTestCase: XCTestCase {
         }
     }
 
-    func waitUntilOrAssert(_ description: String,
+    public func waitUntilOrAssert(_ description: String,
                            timeout: TimeInterval = Test.Timeout,
                            in file: String = #file,
                            at line: Int = #line,
