@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import MobileCore
+import ios_core_library
 import Foundation
 
 open class MockDeviceInfoService: DeviceInfoService {

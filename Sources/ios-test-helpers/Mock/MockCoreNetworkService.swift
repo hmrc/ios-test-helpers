@@ -16,7 +16,7 @@
 
 import XCTest
 import Foundation
-import MobileCore
+import ios_core_library
 
 open class MockCoreNetworkService: MobileCore.Network.Service {
     public var dataRequestCalled = false

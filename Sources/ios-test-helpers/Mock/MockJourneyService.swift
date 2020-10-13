@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import MobileCore
+import ios_core_library
 
 open class MockJourneyService: JourneyService {
 

@@ -15,7 +15,7 @@
  */
 
 import UIKit
-import MobileCore
+import ios_core_library
 
 open class MockApplicationStateService: ApplicationStateService {
     public var returnState: UIApplication.State

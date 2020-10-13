@@ -15,7 +15,7 @@
  */
 
 import XCTest
-import MobileCore
+import ios_core_library
 
 open class MockSpinner: NetworkSpinner, NetworkSpinnerPolicyInjected {
     public var dismissDelay: Double = 0

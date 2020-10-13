@@ -15,7 +15,7 @@
  */
 
 import XCTest
-import MobileCore
+import ios_core_library
 
 open class MockInfoPListService: CoreMockBase, InfoPListService {
     var requestedKeys = [String]()

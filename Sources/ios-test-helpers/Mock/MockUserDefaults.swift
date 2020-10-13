@@ -15,7 +15,7 @@
  */
 
 import Foundation
-import MobileCore
+import ios_core_library
 
 public class MockUserDefaults: UserDefaultsProtocol {
 
