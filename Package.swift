@@ -21,7 +21,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "ios-test-helpers",
-            dependencies: []),
+            dependencies: ["ios-core-library"]),
         .testTarget(
             name: "ios-test-helpersTests",
             dependencies: ["ios-test-helpers"]),
