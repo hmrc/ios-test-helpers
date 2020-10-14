@@ -10,7 +10,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "ios-test-helpers",
-            targets: ["ios-test-helpers"]),
+            targets: ["ios-test-helpers"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,6 +23,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "ios-test-helpersTests",
-            dependencies: ["ios-test-helpers"]),
+            dependencies: ["ios-test-helpers"])
     ]
 )
