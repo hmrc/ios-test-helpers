@@ -16,8 +16,6 @@
 
 import Foundation
 import XCTest
-import ios_test_helpers
-@testable import ios_core_library
 
 open class CoreUnitTestCase: CoreTestCase {
     public var policy: NetworkSpinnerPolicy!
