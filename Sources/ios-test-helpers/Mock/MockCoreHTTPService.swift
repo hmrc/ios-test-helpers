@@ -68,7 +68,7 @@ extension Mock.Core.HTTP {
             return MobileCore.HTTP.Response(value: data, response: response)
         }
 
-        func setError() -> Self {
+        public func setError() -> Self {
             self.error = NSError(domain: "MockHTTPService", code: code, userInfo: nil)
             return self
         }
