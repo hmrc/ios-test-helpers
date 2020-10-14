@@ -45,7 +45,6 @@ open class CoreUnitTestCase: CoreTestCase {
         super.tearDown()
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     open func setupMocks() {
         if let mock = createMockCoreHTTPService() {
             mockCoreHTTPService = mock

@@ -91,11 +91,13 @@ open class CoreTestCase: XCTestCase {
 
     ///Waits until the code in retry block returns nil. If the operation times out then the last fail reason returned by the retry handler
     ///is returned
-    public func waitUntil(_ description: String,
-                   timeout: TimeInterval=Test.Timeout,
-                   in file: String = #file,
-                   at line: Int = #line,
-                   _ retryBlock: Test.AssertionBlock) -> String? {
+    public func waitUntil(
+        _ description: String,
+        timeout: TimeInterval=Test.Timeout,
+        in file: String = #file,
+        at line: Int = #line,
+        _ retryBlock: Test.AssertionBlock
+    ) -> String? {
 
         let finishTime = Date().addingTimeInterval(timeout)
         var timedOut = false
@@ -125,11 +127,13 @@ open class CoreTestCase: XCTestCase {
         }
     }
 
-    public func waitUntilOrAssert(_ description: String,
-                           timeout: TimeInterval = Test.Timeout,
-                           in file: String = #file,
-                           at line: Int = #line,
-                           _ assertionBlock: Test.AssertionBlock) {
+    public func waitUntilOrAssert(
+        _ description: String,
+        timeout: TimeInterval = Test.Timeout,
+        in file: String = #file,
+        at line: Int = #line,
+        _ assertionBlock: Test.AssertionBlock
+    ) {
 
         if let failReason = waitUntil(description, timeout: timeout, in: file, at: line, assertionBlock) {
             failTest(failReason)
