@@ -21,12 +21,12 @@ open class MockDateService: CoreMockBase, DateService {
     var currentDateCalled = 0
     var utcTimezoneCalled = 0
 
-    var returnCurrentDate = HMRCDate.now()
+    var returnCurrentDate: Date?
     var returnUTCTimezone = "TimeZone"
 
     public var currentDate: Date {
         currentDateCalled += 1
-        return returnCurrentDate
+        return returnCurrentDate ?? Date()
     }
     public var utcTimeZone: String {
         utcTimezoneCalled += 1
