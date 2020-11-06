@@ -21,7 +21,7 @@ open class MockApplicationStateService: ApplicationStateService {
     public var returnState: UIApplication.State
 
     public var current: UIApplication.State {
-        return returnState
+        returnState
     }
 
     public init(_ state: UIApplication.State?=nil) {

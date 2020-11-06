@@ -120,7 +120,7 @@ extension Mock.Core.HTTP {
         private(set) var generatedResponses = [Response]()
 
         var lastResponse: Response? {
-            return generatedResponses.last
+            generatedResponses.last
         }
 
         let testCase: CoreUnitTestCase
@@ -226,7 +226,7 @@ extension Mock.Core.HTTP {
         }
 
         public var description: String {
-            return "MockHTTPService. Queue Count = [\(queuedResponses)]"
+            "MockHTTPService. Queue Count = [\(queuedResponses)]"
         }
     }
 }

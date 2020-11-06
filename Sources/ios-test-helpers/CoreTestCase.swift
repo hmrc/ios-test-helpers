@@ -56,7 +56,7 @@ open class CoreTestCase: XCTestCase {
         assertTrue(
             string?.contains(subString) ?? false,
             in: file,
-            at: line) { return "Expected \"\(subString)\" to be contained in \"\(string ?? "")\""}
+            at: line) { "Expected \"\(subString)\" to be contained in \"\(string ?? "")\""}
     }
 
     public func assertTrue(_ value: Bool, in file: String = #file, at line: Int = #line, _ failReason: FailureReasonHandler) {
@@ -85,7 +85,7 @@ open class CoreTestCase: XCTestCase {
 
     public func failTest(_ reason: String, in file: String = #file, at line: Int = #line) {
         assertTrue(false, in: file, at: line) {
-            return reason
+            reason
         }
     }
 

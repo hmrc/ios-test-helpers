@@ -21,7 +21,7 @@ import ios_core_library
 open class MockCoreNetworkService: MobileCore.Network.Service {
     public var dataRequestCalled = false
     public var lastDataRequest: MobileCore.HTTP.RequestBuilder? {
-        return dataRequests.last
+        dataRequests.last
     }
     public var dataRequests = [MobileCore.HTTP.RequestBuilder]()
     public var data: Data?

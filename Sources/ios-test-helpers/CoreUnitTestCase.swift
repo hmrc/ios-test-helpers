@@ -98,43 +98,43 @@ open class CoreUnitTestCase: CoreTestCase {
     }
 
     open func createMockCoreHTTPService() -> Mock.Core.HTTP.Service? {
-        return Mock.Core.HTTP.Service(testCase: self)
+        Mock.Core.HTTP.Service(testCase: self)
     }
 
     open func createMockSpinner() -> MockSpinner? {
-        return MockSpinner()
+        MockSpinner()
     }
 
     open func createMockCoreNetworkService() -> MockCoreNetworkService? {
-        return MockCoreNetworkService()
+        MockCoreNetworkService()
     }
 
     open func createSpinnerPolicy() -> NetworkSpinnerPolicy? {
-        return MobileCore.Network.Spinner.Policy(dismissDelay: 0, extendDelay: 0)
+        MobileCore.Network.Spinner.Policy(dismissDelay: 0, extendDelay: 0)
     }
 
     open func createMockJourneyService() -> MockJourneyService? {
-        return MockJourneyService()
+        MockJourneyService()
     }
 
     open func createMockDeviceInfoService() -> MockDeviceInfoService? {
-        return MockDeviceInfoService()
+        MockDeviceInfoService()
     }
 
     open func createMockUserDefaults() -> MockUserDefaults? {
-        return MockUserDefaults()
+        MockUserDefaults()
     }
 
     open func createMockInfoPListService() -> MockInfoPListService? {
-        return MockInfoPListService(coreTestCase: self)
+        MockInfoPListService(coreTestCase: self)
     }
 
     open func createMockAppInfoService() -> MockAppInfoService? {
-        return MockAppInfoService(coreTestCase: self)
+        MockAppInfoService(coreTestCase: self)
     }
 
     open func createMockDateService() -> MockDateService? {
-        return MockDateService(coreTestCase: self)
+        MockDateService(coreTestCase: self)
     }
 
     public func assertDescendantLabel(of view: UIView,

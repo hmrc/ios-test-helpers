@@ -30,7 +30,7 @@ open class MockJourneyService: JourneyService {
     private var _journeyId: String?
     public var journeyId: String {
         get {
-            return _journeyId ?? ""
+            _journeyId ?? ""
         }
         set {
             _journeyId = newValue
