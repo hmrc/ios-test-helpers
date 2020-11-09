@@ -15,6 +15,7 @@
  */
 
 #if ENABLE_UITUNNEL
+import Foundation
 
 extension BaseUITest {
 
