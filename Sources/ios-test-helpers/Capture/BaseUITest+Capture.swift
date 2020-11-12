@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#if ENABLE_UITUNNEL
+#if DEBUG
 import Foundation
 
 extension BaseUITest {

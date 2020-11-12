@@ -2,7 +2,7 @@
 // Adapted from: https://gist.github.com/ryanmeisters/f4e961731db289f489e1a08183e334d9
 //
 
-#if ENABLE_UITUNNEL
+#if DEBUG
 
 import XCTest
 import Foundation
