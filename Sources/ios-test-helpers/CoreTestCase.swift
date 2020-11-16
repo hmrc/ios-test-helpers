@@ -83,7 +83,11 @@ open class CoreTestCase: XCTestCase {
         }
     }
 
-    public func failTest(_ reason: String, in file: String = #file, at line: Int = #line) {
+    public func failTest(_ reason: String,
+                         onFail: (() -> Void)? = nil,
+                         in file: String = #file,
+                         at line: Int = #line) {
+        onFail?()
         assertTrue(false, in: file, at: line) {
             return reason
         }
@@ -130,13 +134,13 @@ open class CoreTestCase: XCTestCase {
     public func waitUntilOrAssert(
         _ description: String,
         timeout: TimeInterval = Test.Timeout,
+        onFail: (() -> Void)? = nil,
         in file: String = #file,
         at line: Int = #line,
         _ assertionBlock: Test.AssertionBlock
     ) {
-
         if let failReason = waitUntil(description, timeout: timeout, in: file, at: line, assertionBlock) {
-            failTest(failReason)
+            failTest(failReason, onFail: onFail, in: file, at: line)
         }
     }
 }
