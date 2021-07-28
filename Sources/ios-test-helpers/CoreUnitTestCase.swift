@@ -29,6 +29,7 @@ open class CoreUnitTestCase: CoreTestCase {
     public var mockInfoPListService: MockInfoPListService!
     public var mockAppInfoService: MockAppInfoService!
     public var mockDateService: MockDateService!
+    public var mockApplicationStateService: MockApplicationStateService!
 
     override open func setUp() {
         super.setUp()
@@ -95,6 +96,9 @@ open class CoreUnitTestCase: CoreTestCase {
             mockDateService = mock
             MobileCore.Injection.Service.date.inject(mock)
         }
+
+        mockApplicationStateService = createMockApplicationStateService()
+        MobileCore.Injection.Service.applicationState.inject(mockApplicationStateService)
     }
 
     open func createMockCoreHTTPService() -> Mock.Core.HTTP.Service? {
@@ -135,6 +139,10 @@ open class CoreUnitTestCase: CoreTestCase {
 
     open func createMockDateService() -> MockDateService? {
         return MockDateService(coreTestCase: self)
+    }
+
+    open func createMockApplicationStateService() -> MockApplicationStateService {
+        return MockApplicationStateService()
     }
 
     public func assertDescendantLabel(of view: UIView,
