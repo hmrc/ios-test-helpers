@@ -24,6 +24,16 @@ open class MockApplicationStateService: ApplicationStateService {
         return returnState
     }
 
+    public var currentBadgeCount: Int?
+
+    public var badgeCount: Int {
+        get {
+            currentBadgeCount ?? 0
+        } set {
+            currentBadgeCount = newValue
+        }
+    }
+
     public init(_ state: UIApplication.State?=nil) {
         returnState = state ?? .active
     }
