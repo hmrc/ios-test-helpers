@@ -20,8 +20,8 @@ import XCTest
 open class CoreTestCase: XCTestCase {
     public typealias FailureReasonHandler = (() -> String)
 
-    ///Global control of logs produced by calling info(_) on subclasses of this type
-    ///This is overriden by set(logging:)
+    /// Global control of logs produced by calling info(_) on subclasses of this type
+    /// This is overriden by set(logging:)
     static let loggingEnabledByDefault = true
 
     // MARK: - Helpers
@@ -93,8 +93,8 @@ open class CoreTestCase: XCTestCase {
         }
     }
 
-    ///Waits until the code in retry block returns nil. If the operation times out then the last fail reason returned by the retry handler
-    ///is returned
+    /// Waits until the code in retry block returns nil. If the operation times out then the last fail reason returned by the retry handler
+    /// is returned
     public func waitUntil(
         _ description: String,
         timeout: TimeInterval=Test.Timeout,
