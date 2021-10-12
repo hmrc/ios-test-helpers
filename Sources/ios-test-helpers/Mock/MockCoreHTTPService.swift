@@ -24,11 +24,11 @@ extension Mock.Core.HTTP {
         let headers: [String: String]
         private(set) var error: Error?
 
-        ///A string representing a URL or part of a URL.
-        ///If partial, must uniquely identify a particular resource
+        /// A string representing a URL or part of a URL.
+        /// If partial, must uniquely identify a particular resource
         let requestUrlMustContainString: String?
 
-        ///Stores the request that caused this reponse
+        /// Stores the request that caused this reponse
         var request: URLRequest?
 
         public init(code: Int, data: Data?=nil, headers: [String: String] = [:]) {
@@ -55,7 +55,7 @@ extension Mock.Core.HTTP {
             self.error = error
         }
 
-        ///Generates the reponse that is passed back to the code that made the request
+        /// Generates the reponse that is passed back to the code that made the request
         var urlResponse: MobileCore.HTTP.Response {
             guard let request = request else { fatalError("Invalid configuration. no request set!") }
 
@@ -112,11 +112,11 @@ extension Mock.Core.HTTP {
         let shouldLog = true
         public var queuedResponses = [Response]()
 
-        ///Provide closure to this for full control over responses
+        /// Provide closure to this for full control over responses
         var generateResponse: GenerateResponse!
 
         public let urlSession = URLSession(configuration: URLSessionConfiguration.default)
-        ///stores responses together with the request that generated them
+        /// stores responses together with the request that generated them
         private(set) var generatedResponses = [Response]()
 
         var lastResponse: Response? {
@@ -198,7 +198,7 @@ extension Mock.Core.HTTP {
         }
 
         public func cancelRequests() {
-            //nothing to do
+            // nothing to do
         }
 
         public func runRequest(responses: [Mock.Core.HTTP.Response], run: (() -> Void)) {
