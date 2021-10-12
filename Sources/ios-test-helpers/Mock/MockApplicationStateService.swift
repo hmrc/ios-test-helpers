@@ -18,6 +18,8 @@ import UIKit
 import ios_core_library
 
 open class MockApplicationStateService: ApplicationStateService {
+    public var badgeCount: Int = 0
+    
     public var returnState: UIApplication.State
 
     public var current: UIApplication.State {
