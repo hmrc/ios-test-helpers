@@ -69,6 +69,6 @@ public class MockUserDefaults: UserDefaultsProtocol {
     }
 
     public func dictionaryRepresentation() -> [String: Any] {
-        return valuesToReturn.filter { $0.value != nil } as [String : Any]
+        return valuesToReturn.filter { $0.value != nil } as [String: Any]
     }
 }
