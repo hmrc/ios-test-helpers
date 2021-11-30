@@ -67,4 +67,8 @@ public class MockUserDefaults: UserDefaultsProtocol {
         lastRetrievedKey = defaultName
         return valuesToReturn[defaultName] as? Int ?? 0
     }
+
+    public func dictionaryRepresentation() -> [String: Any] {
+        return valuesToReturn.filter { $0.value != nil } as [String : Any]
+    }
 }
