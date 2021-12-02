@@ -25,6 +25,7 @@ open class MockCoreNetworkService: MobileCore.Network.Service {
     }
     public var dataRequests = [MobileCore.HTTP.RequestBuilder]()
     public var data: Data?
+    public var responses: [Data]?
     public var error: MobileCore.Network.ServiceError?
 
     public func mockUnrecoverableError(statusCode: Int) {
@@ -43,6 +44,8 @@ open class MockCoreNetworkService: MobileCore.Network.Service {
         dataRequests.append(request)
         if let error = error {
             handler(.failure(error))
+        } else if let data = responses?.popFirst() {
+            handler(.success(MobileCore.HTTP.Response(value: data, response: nil)))
         } else if let data = data {
             handler(.success(MobileCore.HTTP.Response(value: data, response: nil)))
         } else {
