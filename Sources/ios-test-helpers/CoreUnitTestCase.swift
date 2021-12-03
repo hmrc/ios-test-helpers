@@ -79,7 +79,7 @@ open class CoreUnitTestCase: CoreTestCase {
 
         if let mock = createMockUserDefaults() {
             mockUserDefaults = mock
-            MobileCore.Injection.Service.userDefaults.inject(mock)
+            MobileCore.Injection.Service.userDefaults.inject(mock) // swiftlint:disable:this no_user_defaults
         }
 
         if let mock = createMockInfoPListService() {
