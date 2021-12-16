@@ -25,7 +25,6 @@ open class CoreUnitTestCase: CoreTestCase {
     public var mockSpinner: MockSpinner!
     public var mockJourneyService: MockJourneyService!
     public var mockDeviceInfoService: MockDeviceInfoService!
-    public var mockUserDefaults: MockUserDefaults!
     public var mockInfoPListService: MockInfoPListService!
     public var mockAppInfoService: MockAppInfoService!
     public var mockDateService: MockDateService!
@@ -77,11 +76,6 @@ open class CoreUnitTestCase: CoreTestCase {
             MobileCore.Injection.Service.deviceInfo.inject(mock)
         }
 
-        if let mock = createMockUserDefaults() {
-            mockUserDefaults = mock
-            MobileCore.Injection.Service.userDefaults.inject(mock)
-        }
-
         if let mock = createMockInfoPListService() {
             mockInfoPListService = mock
             MobileCore.Injection.Service.infoPlist.inject(mock)
@@ -123,10 +117,6 @@ open class CoreUnitTestCase: CoreTestCase {
 
     open func createMockDeviceInfoService() -> MockDeviceInfoService? {
         return MockDeviceInfoService()
-    }
-
-    open func createMockUserDefaults() -> MockUserDefaults? {
-        return MockUserDefaults()
     }
 
     open func createMockInfoPListService() -> MockInfoPListService? {
