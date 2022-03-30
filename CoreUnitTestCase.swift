@@ -28,6 +28,7 @@ open class CoreUnitTestCase: CoreTestCase {
     public var mockInfoPListService: MockInfoPListService!
     public var mockAppInfoService: MockAppInfoService!
     public var mockDateService: MockDateService!
+    public var mockLocalisationService: MockLocalisationService!
     public var mockApplicationStateService: MockApplicationStateService!
 
     override open func setUp() {
@@ -91,6 +92,11 @@ open class CoreUnitTestCase: CoreTestCase {
             MobileCore.Injection.Service.date.inject(mock)
         }
 
+        if let mock = createMockLocalisationService() {
+            mockLocalisationService = mock
+            MobileCore.Injection.Service.localisation.inject(mock)
+        }
+
         mockApplicationStateService = createMockApplicationStateService()
         MobileCore.Injection.Service.applicationState.inject(mockApplicationStateService)
     }
@@ -129,6 +135,10 @@ open class CoreUnitTestCase: CoreTestCase {
 
     open func createMockDateService() -> MockDateService? {
         return MockDateService(coreTestCase: self)
+    }
+
+    open func createMockLocalisationService() -> MockLocalisationService? {
+        return MockLocalisationService()
     }
 
     open func createMockApplicationStateService() -> MockApplicationStateService {
