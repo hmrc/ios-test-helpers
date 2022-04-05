@@ -21,14 +21,14 @@ open class MockDateService: CoreMockBase, DateService {
 
     private let instance = MobileCore.Date.Service()
 
-    var invokedCurrentLocaleGetter = false
-    var invokedCurrentLocaleGetterCount = 0
-    var stubbedCurrentLocale: Locale?
+    var invokedBritishLocaleGetter = false
+    var invokedBritishLocaleGetterCount = 0
+    var stubbedBritishLocale: Locale?
 
-    public var currentLocale: Locale {
-        invokedCurrentLocaleGetter = true
-        invokedCurrentLocaleGetterCount += 1
-        return stubbedCurrentLocale ?? instance.currentLocale
+    public var britishLocale: Locale {
+        invokedBritishLocaleGetter = true
+        invokedBritishLocaleGetterCount += 1
+        return stubbedBritishLocale ?? instance.britishLocale
     }
 
     var invokedUsPosixLocaleGetter = false
