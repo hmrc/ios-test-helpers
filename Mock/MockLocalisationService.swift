@@ -18,17 +18,17 @@ import XCTest
 import ios_core_library
 
 open class MockLocalisationService: MobileCore.Localisation.Service {
-    var override_shouldShowLanguageSwitcher: Bool = false
-    var didSet_shouldShowLanguageSwitcher: Bool?
+    var overrideShouldShowLanguageSwitcher: Bool = false
+    var didSetShouldShowLanguageSwitcher: Bool?
     override open var shouldShowLanguageSwitcher: Bool {
-        get { override_shouldShowLanguageSwitcher }
-        set { didSet_shouldShowLanguageSwitcher = newValue }
+        get { overrideShouldShowLanguageSwitcher }
+        set { didSetShouldShowLanguageSwitcher = newValue }
     }
 
-    var override_shouldShowContentInWelsh: Bool = false
-    var didSet_shouldShowContentInWelsh: Bool?
+    var overrideShouldShowContentInWelsh: Bool = false
+    var didSetShouldShowContentInWelsh: Bool?
     override open var shouldShowContentInWelsh: Bool {
-        get { override_shouldShowContentInWelsh }
-        set { didSet_shouldShowContentInWelsh = newValue }
+        get { overrideShouldShowContentInWelsh }
+        set { didSetShouldShowContentInWelsh = newValue }
     }
 }
