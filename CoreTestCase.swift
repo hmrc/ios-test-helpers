@@ -139,8 +139,10 @@ open class CoreTestCase: XCTestCase {
         at line: Int = #line,
         _ assertionBlock: Test.AssertionBlock
     ) {
-        if let failReason = waitUntil(description, timeout: timeout, in: file, at: line, assertionBlock) {
-            failTest(failReason, onFail: onFail, in: file, at: line)
+        XCTContext.runActivity(named: "waitUntilOrAssert(\(description)") { _ in
+            if let failReason = waitUntil(description, timeout: timeout, in: file, at: line, assertionBlock) {
+                failTest(failReason, onFail: onFail, in: file, at: line)
+            }
         }
     }
 }
