@@ -21,6 +21,18 @@ open class MockDateService: CoreMockBase, DateService {
 
     private let instance = MobileCore.Date.Service()
 
+    var stubbedShouldCurrentSceneDisplayWelshDates = false
+    var invokedShouldCurrentSceneDisplayWelshDates = false
+    public var shouldCurrentSceneDisplayWelshDates: Bool {
+        get {
+            return stubbedShouldCurrentSceneDisplayWelshDates
+        }
+        set {
+            invokedShouldCurrentSceneDisplayWelshDates = true
+            stubbedShouldCurrentSceneDisplayWelshDates = newValue
+        }
+    }
+
     var invokedCurrentLocaleGetter = false
     var invokedCurrentLocaleGetterCount = 0
     var stubbedCurrentLocale: Locale?
