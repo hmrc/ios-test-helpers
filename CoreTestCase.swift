@@ -61,11 +61,16 @@ open class CoreTestCase: XCTestCase {
 
     public func assertTrue(_ value: Bool, in file: String = #file, at line: Int = #line, _ failReason: FailureReasonHandler) {
         if !value {
-            recordFailure(
-                withDescription: failReason(),
-                inFile: file,
-                atLine: line,
-                expected: true)
+            record(
+                .init(
+                    type: .assertionFailure,
+                    compactDescription: failReason(),
+                    detailedDescription: nil,
+                    sourceCodeContext: .init(location: .init(filePath: file, lineNumber: line)),
+                    associatedError: nil,
+                    attachments: []
+                )
+            )
         }
     }
 
@@ -75,11 +80,16 @@ open class CoreTestCase: XCTestCase {
 
     public func assertNotNil(_ value: Any?, in file: String = #file, at line: Int = #line, _ failReason: FailureReasonHandler) {
         if value == nil {
-            recordFailure(
-                withDescription: failReason(),
-                inFile: file,
-                atLine: line,
-                expected: true)
+            record(
+                .init(
+                    type: .assertionFailure,
+                    compactDescription: failReason(),
+                    detailedDescription: nil,
+                    sourceCodeContext: .init(location: .init(filePath: file, lineNumber: line)),
+                    associatedError: nil,
+                    attachments: []
+                )
+            )
         }
     }
 
@@ -108,19 +118,21 @@ open class CoreTestCase: XCTestCase {
         var counter = 0
         var failReason: String?
 
-        while !timedOut {
-            RunLoop.main.run(until: Date(timeIntervalSinceNow: 0.1))
-            failReason = retryBlock()
-            if failReason == nil {
-                break
-            }
+        XCTContext.runActivity(named: "waitUntil '\(description)'") { _ in
+            while !timedOut {
+                RunLoop.main.run(until: Date(timeIntervalSinceNow: 0.1))
+                failReason = retryBlock()
+                if failReason == nil {
+                    break
+                }
 
-            timedOut = Date() >= finishTime
-            counter += 1
-            if counter == 9 {
-                print("- Fail reason: \(failReason!)")
-                print("Waiting until '\(description)'")
-                counter = 0
+                timedOut = Date() >= finishTime
+                counter += 1
+                if counter == 9 {
+                    print("- Fail reason: \(failReason!)")
+                    print("Waiting until '\(description)'")
+                    counter = 0
+                }
             }
         }
 
@@ -143,6 +155,34 @@ open class CoreTestCase: XCTestCase {
             if let failReason = waitUntil(description, timeout: timeout, in: file, at: line, assertionBlock) {
                 failTest(failReason, onFail: onFail, in: file, at: line)
             }
+        }
+    }
+
+    open override func setUp() {
+        super.setUp()
+
+        redirectTestLogs()
+    }
+
+    private func redirectTestLogs() {
+        guard let testLog = Attachment.testLog.logFile else {
+            return
+        }
+
+        freopen(testLog.path.cString(using: String.Encoding.ascii), "w", stderr)
+    }
+
+    open override func record(_ issue: XCTIssue) {
+        add(attachment: Attachment.testLog.attachment)
+        add(attachment: Attachment.appErrorScreenshot(name: "FailedTestScreenshot").attachment)
+        super.record(issue)
+    }
+}
+
+extension CoreTestCase {
+    func add(attachment: XCTAttachment?) {
+        if let attachment = attachment {
+            add(attachment)
         }
     }
 }
