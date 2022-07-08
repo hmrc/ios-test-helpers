@@ -160,22 +160,6 @@ open class CoreTestCase: XCTestCase {
 
     open override func setUp() {
         super.setUp()
-
-        redirectTestLogs()
-    }
-
-    private func redirectTestLogs() {
-        guard let testLog = Attachment.testLog.logFile else {
-            return
-        }
-
-        freopen(testLog.path.cString(using: String.Encoding.ascii), "w", stderr)
-    }
-
-    open override func record(_ issue: XCTIssue) {
-        add(attachment: Attachment.testLog.attachment)
-//        add(attachment: Attachment.appErrorScreenshot(name: "FailedTestScreenshot").attachment)
-        super.record(issue)
     }
 }
 
