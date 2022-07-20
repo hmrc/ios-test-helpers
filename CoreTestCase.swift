@@ -174,7 +174,7 @@ open class CoreTestCase: XCTestCase {
 
     open override func record(_ issue: XCTIssue) {
         add(attachment: Attachment.testLog.attachment)
-        add(attachment: Attachment.appErrorScreenshot(name: "FailedTestScreenshot").attachment)
+//        add(attachment: Attachment.appErrorScreenshot(name: "FailedTestScreenshot").attachment)
         super.record(issue)
     }
 }
