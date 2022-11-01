@@ -148,8 +148,8 @@ open class CoreUnitTestCase: CoreTestCase {
     public func assertDescendantLabel(of view: UIView,
                                       matches text: String,
                                       partialMatch: Bool=false,
-                                      in file: String = #file,
-                                      at line: Int = #line) {
+                                      in file: StaticString = #file,
+                                      at line: UInt = #line) {
 
         let found = view.descendantLabelWith(text: text, allowPartialMatch: partialMatch) != nil
         let comparisonType = partialMatch ? "containing" : "matching"

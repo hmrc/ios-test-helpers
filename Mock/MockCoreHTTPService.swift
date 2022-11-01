@@ -107,7 +107,7 @@ extension Mock.Core.HTTP {
     }
 
     public class Service: CoreHTTPService, CustomStringConvertible {
-
+        public let sessionService = MobileCore.Network.SessionConfigurationService()
         typealias GenerateResponse = ((_ request: URLRequest) -> Response?)
         let shouldLog = true
         public var queuedResponses = [Response]()
@@ -137,7 +137,7 @@ extension Mock.Core.HTTP {
             }
         }
 
-        public func waitForRequestQueueToComplete(in file: String = #file, at line: Int = #line) {
+        public func waitForRequestQueueToComplete(in file: StaticString = #file, at line: UInt = #line) {
             testCase.waitUntilOrAssert("all requests in queue have been issued", in: file, at: line) {
                 if self.queuedResponses.isEmpty {
                     return nil

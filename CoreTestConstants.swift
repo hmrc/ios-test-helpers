@@ -20,4 +20,5 @@ import XCTest
 public struct Test {
     public static let Timeout: Double = 60
     public typealias AssertionBlock = (() -> String?)
+    public static let dummySessionID = "51cc67d6-21da-11ec-9621-0242ac130002"
 }

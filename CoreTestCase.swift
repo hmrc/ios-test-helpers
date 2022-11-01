@@ -51,15 +51,15 @@ open class CoreTestCase: XCTestCase {
 
     public func assertString(_ string: String?,
                              contains subString: String,
-                             in file: String = #file,
-                             at line: Int = #line) {
+                             in file: StaticString = #file,
+                             at line: UInt = #line) {
         assertTrue(
             string?.contains(subString) ?? false,
             in: file,
             at: line) { return "Expected \"\(subString)\" to be contained in \"\(string ?? "")\""}
     }
 
-    public func assertTrue(_ value: Bool, in file: String = #file, at line: Int = #line, _ failReason: FailureReasonHandler) {
+    public func assertTrue(_ value: Bool, in file: StaticString = #file, at line: UInt = #line, _ failReason: FailureReasonHandler) {
         if !value {
             record(
                 .init(
@@ -74,11 +74,11 @@ open class CoreTestCase: XCTestCase {
         }
     }
 
-    public func assertFalse(_ value: Bool, in file: String = #file, at line: Int = #line, _ failReason: FailureReasonHandler) {
+    public func assertFalse(_ value: Bool, in file: StaticString = #file, at line: UInt = #line, _ failReason: FailureReasonHandler) {
         assertTrue(!value, in: file, at: line, failReason)
     }
 
-    public func assertNotNil(_ value: Any?, in file: String = #file, at line: Int = #line, _ failReason: FailureReasonHandler) {
+    public func assertNotNil(_ value: Any?, in file: StaticString = #file, at line: UInt = #line, _ failReason: FailureReasonHandler) {
         if value == nil {
             record(
                 .init(
@@ -95,8 +95,8 @@ open class CoreTestCase: XCTestCase {
 
     public func failTest(_ reason: String,
                          onFail: (() -> Void)? = nil,
-                         in file: String = #file,
-                         at line: Int = #line) {
+                         in file: StaticString = #file,
+                         at line: UInt = #line) {
         onFail?()
         assertTrue(false, in: file, at: line) {
             return reason
@@ -108,8 +108,8 @@ open class CoreTestCase: XCTestCase {
     public func waitUntil(
         _ description: String,
         timeout: TimeInterval=Test.Timeout,
-        in file: String = #file,
-        at line: Int = #line,
+        in file: StaticString = #file,
+        at line: UInt = #line,
         _ retryBlock: Test.AssertionBlock
     ) -> String? {
 
@@ -147,8 +147,8 @@ open class CoreTestCase: XCTestCase {
         _ description: String,
         timeout: TimeInterval = Test.Timeout,
         onFail: (() -> Void)? = nil,
-        in file: String = #file,
-        at line: Int = #line,
+        in file: StaticString = #file,
+        at line: UInt = #line,
         _ assertionBlock: Test.AssertionBlock
     ) {
         XCTContext.runActivity(named: "waitUntilOrAssert(\(description)") { _ in
@@ -158,8 +158,8 @@ open class CoreTestCase: XCTestCase {
         }
     }
 
-    open override func setUp() {
-        super.setUp()
+    open override func setUpWithError() throws {
+        try super.setUpWithError()
     }
 }
 
@@ -168,5 +168,13 @@ extension CoreTestCase {
         if let attachment = attachment {
             add(attachment)
         }
+    }
+    func add(name: String, attachmentText: String) {
+        add(attachment: .init(
+            uniformTypeIdentifier: "public.plain-text",
+            name: name,
+            payload: attachmentText.data(using: .utf8),
+            userInfo: [:])
+        )
     }
 }
