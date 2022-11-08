@@ -31,8 +31,8 @@ open class CoreUnitTestCase: CoreTestCase {
     public var mockLocalisationService: MockLocalisationService!
     public var mockApplicationStateService: MockApplicationStateService!
 
-    override open func setUp() {
-        super.setUp()
+    override open func setUpWithError() throws {
+        try super.setUpWithError()
         MobileCore.config = MobileCore.Configuration(
             appConfig: MobileCore.Configuration.AppConfig(appKeychainID: "AppIDAccountKey")
         )
