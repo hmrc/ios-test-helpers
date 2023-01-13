@@ -26,6 +26,8 @@ open class MockDeviceInfoService: DeviceInfoService {
 
     public var returnAppInstallationId = "an installation id"
     public var returnAppVersion = "app-Version"
+    public var returnAppBuild = "app-Build"
+    public var returnVersionBuild = "app-Version (app-Build)"
     public var returnOperatingSystem = "iOS-Version"
     public var returnDevice = "a-Device"
 
@@ -36,6 +38,8 @@ open class MockDeviceInfoService: DeviceInfoService {
 
     public var appInstallationIdCalled = false
     public var appVersionCalled = false
+    public var buildNumberCalled = false
+    public var versionBuildCalled = false
     public var operatingSystemCalled = false
     public var deviceCalled = false
 
@@ -49,6 +53,16 @@ open class MockDeviceInfoService: DeviceInfoService {
     public var appVersion: String {
         appVersionCalled = true
         return returnAppVersion
+    }
+
+    public var buildNumber: String {
+        buildNumberCalled = true
+        return returnAppBuild
+    }
+    
+    public var versionBuild: String {
+        versionBuildCalled = true
+        return returnVersionBuild
     }
 
     public var operatingSystem: String {
