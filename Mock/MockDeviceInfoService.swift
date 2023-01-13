@@ -59,7 +59,7 @@ open class MockDeviceInfoService: DeviceInfoService {
         buildNumberCalled = true
         return returnAppBuild
     }
-    
+
     public var versionBuild: String {
         versionBuildCalled = true
         return returnVersionBuild
