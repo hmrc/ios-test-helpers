@@ -22,13 +22,19 @@ open class MockLocalisationService: MobileCore.Localisation.Service {
     var didSetShouldShowLanguageSwitcher: Bool?
     override open var shouldShowLanguageSwitcher: Bool {
         get { overrideShouldShowLanguageSwitcher }
-        set { didSetShouldShowLanguageSwitcher = newValue }
+        set {
+            didSetShouldShowLanguageSwitcher = newValue
+            super.shouldShowLanguageSwitcher = newValue
+        }
     }
 
     var overrideShouldShowContentInWelsh = false
     var didSetShouldShowContentInWelsh: Bool?
     override open var shouldShowContentInWelsh: Bool {
         get { overrideShouldShowContentInWelsh }
-        set { didSetShouldShowContentInWelsh = newValue }
+        set {
+            didSetShouldShowContentInWelsh = newValue
+            super.shouldShowContentInWelsh = newValue
+        }
     }
 }
