@@ -153,6 +153,16 @@ open class MockDateService: CoreMockBase, DateService {
         return stubbedLongDateUTCDateFormatter ?? instance.longDateUTCDateFormatter
     }
 
+    var invokedMediumDateBritishTimeZoneFormatterGetter = false
+    var invokedMediumDateBritishTimeZoneFormatterGetterCount = 0
+    var stubbedMediumDateBritishTimeZoneFormatter: Foundation.DateFormatter?
+
+    public var mediumDateBritishTimeZoneFormatter: Foundation.DateFormatter {
+        invokedMediumDateBritishTimeZoneFormatterGetter = true
+        invokedMediumDateBritishTimeZoneFormatterGetterCount += 1
+        return stubbedMediumDateBritishTimeZoneFormatter ?? instance.mediumDateBritishTimeZoneFormatter
+    }
+
     var invokedTimeFormatterGetter = false
     var invokedTimeFormatterGetterCount = 0
     var stubbedTimeFormatter: Foundation.DateFormatter?
