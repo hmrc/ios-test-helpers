@@ -17,6 +17,7 @@
 import ios_core_library
 import XCTest
 
+// swiftlint:disable identifier_name
 open class MockDateService: CoreMockBase, DateService {
 
     private let instance = MobileCore.Date.Service()
@@ -367,3 +368,4 @@ open class MockDateService: CoreMockBase, DateService {
         return stubbedDateAtTimeFormatResult ?? instance.dateAtTimeFormat(date: date)
     }
 }
+// swiftlint:enable identifier_name
